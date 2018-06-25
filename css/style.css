@@ -1,0 +1,200 @@
+/*************************************
+            Main Layout
+**************************************/
+body {
+  font-size: 16px;
+}
+  #wrapper {
+    width: 1160px;
+  }
+    #mainRow {
+      margin-top: 25px;
+      margin-bottom: 25px;
+      padding-right: 50px;
+    }
+      #sidebar {
+        display: inline-block;
+        float: left;
+        width: 280px;
+        margin-left: 40px;
+        padding-right: 20px;
+      }
+      #gameBox {
+        max-height: calc(100vh - 50px);
+        height: 600px;
+        width: 800px;
+        padding: 0; /* loads weirdly without this */
+        overflow: scroll;
+      }
+
+/*************************************
+              Sidebar
+**************************************/
+  /*** Format Elements for Sidebar ***/
+  #logout, #username, #password, #instructions,
+  #centerView, #reset, #moveList {
+    /* Block elements */
+    display: block; /* only useful for moveList */
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  #login, #register, #turnCounter, #highlightBox {
+    /* Side-by-side elements */
+    display: inline-block;
+    width: 120px;
+    margin-bottom: 10px;
+  }
+
+/*** Login/Register Form ***/
+#sidebar form {
+  font-size: 14px;
+}
+  form #register {
+    float: right;
+    background-color: #ddd;
+  }
+  form #register:hover {
+    background-color: #bbb;
+  }
+
+.psuedo-button {
+  /* Achieves Bootstrap button look */
+  display: inline-block;
+  width: 190px; /* not sure why but this is needed */
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*** Username Boxes and Color Picker ***/
+  #player1Box, #player2Box {
+    float: right;
+    margin-bottom: 10px;
+    border-color: #46b8da;
+    background-color: #5bc0de;
+  }
+
+  /*** Color Picker ***/
+  .sp-replacer {
+    width: 50px;
+    padding: 3px 0 3px 3px;
+    display: inline-block;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .sp-preview {
+    height: 26px;
+    border-radius: 4px
+  }
+
+  /*** X-Editable ***/
+  a.editable-click, a.editable-click:hover {
+    border-bottom: dashed 1px #337ab7;
+    font-weight: normal;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  a:focus, a:hover {
+      color: #337ab7;
+      text-decoration: underline;
+  }
+  .popover-title {
+    color: #333;
+  }
+
+#highlightBox, #turnCounter {
+  background-color: #f0ad4e;
+  border-color: #eea236;
+}
+#highlightBox {
+  float: right;
+}
+#moveList {
+  height: 80px;
+  resize: none;
+  border: 1px solid #222;
+}
+#moveList:focus {
+  border: 1px solid transparent;
+}
+
+  /* Scrollbar Styles for Game */
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+
+#loadingScreen {
+  height: 100%;
+  padding: 0;
+  margin-top: -20px;
+  background-color: #222;
+  text-align: center;
+  color: #888;
+}
+
+/*************************************
+                Game
+**************************************/
+#game {
+  /* Makes squares touch */
+  font-size: 0;
+}
+.square {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  -webkit-box-shadow: inset 3px 3px 4px 1px #000;
+  background-color: #222;
+}
+.square:hover:not([data-owner]) {
+  /* Darkest squares */
+  background-color: #888 !important;
+}
+div[data-lock="0"]:hover:not([data-owner]) {
+  /* Available squares */
+  cursor: pointer;
+}
+#winScreen {
+  /* End-of-game Modal */
+  display: none;
+  height: 80%;
+  width: 80%;
+  margin: auto;
+  background-color: green;
+}
+
+/* Condensed Navbar style thanks to maridlcrmn on Bootsnipp */
+.navbar { width: 100%; }
+.navbar-brand { position: relative; z-index: 2; }
+.navbar-nav.navbar-right .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px 30px 10px auto; }
+.navbar .navbar-collapse { position: relative; }
+.navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 22px; }
+.navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 120px; padding-left: 80px; width: 100%; }
+.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
+.navbar.navbar-inverse .nav-collapse { background-color: #222; }
+.navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
+.nav-collapse>li { float: right; }
+.btn.btn-circle { border-radius: 50px; }.btn.btn-outline { background-color: transparent; }
+@media screen and (max-width: 767px) {
+    .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; }
+    .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
+    .navbar .nav-collapse .navbar-form { margin: 0; }
+    .nav-collapse>li { float: none; }
+}

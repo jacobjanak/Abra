@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/spectrum.css">
+  <link rel="stylesheet" href="./css/editable.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Abra</title>
+</head>
+
+<body>
+  <div id="wrapper">
+
+    <!-- Modals -->
+    
+    <!-- Instruction modal -->
+    <div class="modal fade" id="instructionsModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title">Instructions</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Gameplay</h4>
+            <i>Connect 5 squares in a row to win!</i>
+            <br /> Yes, that includes diagonals. You can only place a piece adjacent to an existing square, with the exeption of the very first square, which must be placed in the center. To assist you, "available" squares are a lighter grey color than
+            the locked squares. The boundaries are essentially endless, so a tie is nearly impossible!
+            <h4>Features</h4>
+            <b>Center View</b> = Moves the middle square to the center of your screen.
+            <br />
+            <b>Username</b> = Just click one to change it! Entering in 'SmartBot3000' will activate the bot and can be in the player 1 or player 2 spot.
+            <br />
+            <b>Color Picker</b> = Click the color picker to choose a player's square color. Make sure to close the color picker by clicking the button. If you click somewhere else the changes won't take effect until after someone moves.</b>
+            <br />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reset modal -->
+    <div class="modal fade" id="resetModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"> <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Careful!</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to reset the game? This action can't be undone.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary" id="resetConfirm" data-dismiss="modal">
+              Reset
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Win modal -->
+    <div class="modal fade" id="winModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            <h4 class="modal-title" id="winTitle"></h4>
+          </div>
+          <div class="modal-body" id="winBody">
+            <!-- Empty -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--************** Page content ******************-->
+    <div class="row" id="mainRow">
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <button class="btn btn-primary" id="instructions" type="button" data-toggle="modal" data-target="#instructionsModal">
+          Instructions
+        </button>
+        <button class="btn btn-primary" id="centerView" type="submit">
+          Center View
+        </button>
+
+        <!-- Usernames -->
+        <input class="basic" id="color1" type="text" value="blue">
+        <div class="psuedo-button usernameBox" id="player1Box">
+          <a href="#" class="usernameText" id="player1" data-type="text" data-placement="right" data-title="Enter username">
+            Player 1
+          </a>
+        </div>
+        <input class="basic" id="color2" type="text" value="red">
+        <div class="psuedo-button usernameBox" id="player2Box">
+          <a href="#" class="usernameText" id="player2" data-type="text" data-placement="right" data-title="Enter username">SmartBot3000</a>
+        </div>
+        <div class="psuedo-button" id="turnCounter">
+          Turn: 1
+        </div>
+        <div class="psuedo-button" id="highlightBox">
+          <input id="highlight" type="checkbox" onchange="highlight()" checked> &nbsp;Highlight
+        </div>
+        <textarea id="moveList" style="font-size:12px;" readonly></textarea>
+        <button class="btn btn-danger" id="reset" type="submit" data-toggle="modal" data-target="#resetModal">
+          Reset Game
+        </button>
+
+      </div>
+      <!-- Game Display -->
+      <div class="col-sm-9 col-xs-12" id="gameBox">
+        <div id="game">
+          <!-- This is where the magic happens! -->
+        </div>
+        <div id="loadingScreen">
+          <h1>LOADING</h1>
+        </div>
+        <div id="winScreen">
+          <!-- Win modal goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End body -->
+
+  <!-- Latest JQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <!-- Latest Bootstrap JavaScript (self note: I removed crossorigin="anonymous") -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./js/spectrum.js"></script>
+  <script src="./js/editable.min.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
